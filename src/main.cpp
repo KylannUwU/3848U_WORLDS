@@ -114,7 +114,7 @@ void initialize()
 
 
 
-        Auton("TEST \n\n RED", soloAWP_Red_NEW),
+        Auton("TEST \n\n RED", BluePos_NOMID_Rush),
       // Auton("Blue POS NO MID\n\n BLUE", BluePos_NOMID),      
    
       
@@ -263,7 +263,7 @@ void opcontrol()
     {
          int current_time = pros::millis();
 
-    bool optStatement = AllianceSet  ? opt2.get_hue() > 220.0 : opt2.get_hue() < 30.0  ;
+    bool optStatement = AllianceSet  ? opt2.get_hue() > 220.0 : opt2.get_hue() < 30.0  ;  
     
     if (optStatement && isSorting)  // No Blues Detect: 100.0* // 200.0 // **150.0
     

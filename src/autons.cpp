@@ -970,25 +970,29 @@ void RedPos_NOMID()
 void BluePos_NOMID_Rush()
 {
   AllianceSet = false;
+  pros::Task intakedt(IntakeDetector);
   // Drive to MOGO and score PRELOAD
-  chassis.pid_drive_set(31_in, 120);
-  pros::delay(1200);
-  chassis.pid_turn_set(90_deg, 120);
-  chassis.pid_wait_until(15_deg);
+  chassis.pid_drive_set(38_in, 127);
+  chassis.pid_wait_until(5_in);
+  doinker.set_value(true);
+  chassis.pid_wait_until(32_in);
+  doinker.set_value(false); 
+  chassis.pid_wait_until(35_in);
+  pros::delay(20);
+  chassis.pid_drive_set(-25_in ,120);
+  chassis.pid_wait_until(-17_in);
   doinker.set_value(true);
   chassis.pid_wait_quick_chain();
-  doinker.set_value(false);
-  // Take MOGO
-  chassis.pid_turn_set(45_deg, 120);
+  chassis.pid_turn_set(-100_deg, 120);
   chassis.pid_wait_quick_chain();
-  chassis.pid_drive_set(-17_in ,127);
+  chassis.pid_drive_set(-28_in, 120);
   chassis.pid_wait_quick_chain();
-  mobile.set_value(true);
-  pros::delay(50);
+
+  pros::delay(500000);
 
   // Swing to ring 
   chassis.pid_swing_set(ez::RIGHT_SWING, -90_deg, 100,-45);
-  chassis.pid_wait_quick_chain();
+  chassis.pid_wait_quick_chain(); 
   // Start intake 
   pros::Task CS(IntakeCS); 
   chassis.pid_drive_set(28_in, 120);
